@@ -2,7 +2,6 @@ from django.conf import settings
 from django.urls import reverse
 from django.db import models
 
-import htmlgenerator as hg
 
 from groups.models import Group
 
@@ -23,7 +22,7 @@ class Post(models.Model):
         return self.message
 
     def save(self, *args, **kwargs):
-        self.message_html = hg.HTML(hg.HEAD(), hg.BODY(hg.H1(self.message)))
+        self.message_html = self.message
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):

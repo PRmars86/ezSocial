@@ -5,8 +5,6 @@ from django.db import models
 from django.utils.text import slugify
 # from accounts.models import User
 
-##import misaka
-import htmlgenerator as hg
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -30,8 +28,7 @@ class Group(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
-        self.description_html = hg.HTML(
-            hg.HEAD(), hg.BODY(hg.H1(self.description)))
+        self.description_html = self.description
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):

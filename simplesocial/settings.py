@@ -142,7 +142,8 @@ USE_TZ = True
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] if DEBUG else []
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] if not IS_HEROKU_APP else [
+    BASE_DIR / "staticfiles"]
 
 LOGIN_REDIRECT_URL = "test"
 LOGOUT_REDIRECT_URL = "thanks"

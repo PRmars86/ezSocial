@@ -141,7 +141,7 @@ USE_TZ = True
 
 STATIC_ROOT = BASE_DIR / "static"
 
-STATIC_URL = "/static/"
+STATIC_URL = "/static/" if not IS_HEROKU_APP else "/app/static/"
 STATICFILES_DIRS = []
 
 LOGIN_REDIRECT_URL = "test"

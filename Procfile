@@ -1,1 +1,1 @@
-web: gunicorn simplesocial.wsgi
+web: python manage.py collectstatic --no-input; gunicorn simplesocial.wsgi
